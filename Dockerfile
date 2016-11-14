@@ -13,8 +13,7 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
   && apt-get install -qq -y nginx=1.10.2-1~jessie
 
 # install foreman
-RUN gem install foreman \
-  && gem install unicorn
+RUN gem install foreman
 
 # install the latest postgresql lib for pg gem
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
@@ -39,11 +38,13 @@ ONBUILD ADD Gemfile /app/Gemfile
 ONBUILD ADD Gemfile.lock /app/Gemfile.lock
 ONBUILD RUN bundle install --without development test
 ONBUILD ADD . /app
-ONBUILD RUN bundle exec rake assets:precompile
 
 ADD nginx-sites.conf /etc/nginx/sites-enabled/default
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD unicorn.rb /app/config/unicorn.rb
 ADD Procfile /app/Procfile
+
+# ADD server.crt /etc/nginx/ssl/server.crt
+# ADD server.key /etc/nginx/ssl/server.key
 
 CMD foreman start -f Procfile

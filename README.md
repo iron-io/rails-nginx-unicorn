@@ -1,5 +1,7 @@
 # Rails(+ Nginx, Unicorn) Dockerfile
 
+[![CircleCI](https://circleci.com/gh/iron-io/rails-nginx-unicorn.svg?style=svg&circle-token=fc354275fd99b352c8f4055345a3fb1aae91139d)](https://circleci.com/gh/iron-io/rails-nginx-unicorn)
+
 Forked from https://github.com/seapy/dockerfiles/tree/master/rails-nginx-unicorn
 
 Easy useable docker for rails. less configuration, affordable production.

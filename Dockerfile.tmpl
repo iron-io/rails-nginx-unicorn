@@ -1,4 +1,4 @@
-FROM ruby:2.2.5
+FROM ruby:{{ .RUBY_VERSION }}
 MAINTAINER iron.io
 
 ARG DEBIAN_FRONTEND=noninteractive

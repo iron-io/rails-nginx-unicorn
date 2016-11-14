@@ -1,1 +1,14 @@
-# TODO
+machine:
+  services:
+    - docker
+checkout:
+  post:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+
+dependencies:
+  pre:
+    - go get github.com/noqcks/gucci
+
+test:
+  override:
+    - ./build.sh

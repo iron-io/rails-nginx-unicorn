@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ruby_versions=(2.1.10 2.1.8 2.1.9 2.1 2.2.5 2.2 2.3.1 2.3)
+ruby_versions=(2.7.6)
 
 for version in "${ruby_versions[@]}"; do
   export RUBY_VERSION=${version}
